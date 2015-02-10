@@ -38,6 +38,8 @@ dest_bin=${destHome}/bin          # 项目的运行脚本放在哪里
 dest_bin_start=${projName}_start  # 项目的启动脚本
 dest_bin_stop=${projName}_stop    # 项目的停止脚本
 dest_conf=${destHome}/conf        # 项目的配置信息目录
+dest_jars=${destHome}/jars        # 项目运行时依赖的 jar 存放的位置
+                                  # 当然，它也包括项目编译出来的 jar
 
 
 # 配置文件的替换
