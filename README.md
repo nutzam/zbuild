@@ -34,11 +34,11 @@ build_conf=${projName}/conf   # 项目的配置文件目录，内容会被输出
 build_tmp=${destHome}/tmp     # 编译的临时目录，编译完毕会被删除，这个目录用来生成 jar
 
 # 下面和运行相关
-dest_bin=${destHome}/bin      # 项目的运行脚本放在哪里
-dest_conf=${destHome}/conf    # 项目的配置信息目录
+dest_bin=${destHome}/bin          # 项目的运行脚本放在哪里
+dest_bin_start=${projName}_start  # 项目的启动脚本
+dest_bin_stop=${projName}_stop    # 项目的停止脚本
+dest_conf=${destHome}/conf        # 项目的配置信息目录
 
-dest_bin_start=${dest_bin}/${projName}_start # 项目的启动脚本
-dest_bin_stop=${dest_bin}/${projName}_stop  # 项目的停止脚本
 
 # 配置文件的替换
 # zbuild 会依次打开 $destHome/conf 下面的所有 properties 文件，
