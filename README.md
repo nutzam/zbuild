@@ -9,10 +9,12 @@
 # 编译&部署
 zbuild /path/to/project  /path/to/dest
 
+- 如果/path/to/project是个git路径,那么会先clone下来
 - 会把项目编译
 - 会把相关资源输出到对应目录
 - 会生成一个运行脚本
 ```
+
 
 # zbuild 的配置
 
@@ -20,8 +22,8 @@ zbuild /path/to/project  /path/to/dest
 如果这个工程目录下没有 zbuild.conf，则会自动生成一个。
 
 ```sh
-projHome=/path/to/project     # 项目的工程目录，支持 ~ 和环境变量
-destHome=/path/to/dest        # 项目的目标目录，支持 ~ 和环境变量
+projHome=/path/to/project     # 项目的工程目录，支持 ~ 和环境变量, 默认是当前路径
+destHome=/path/to/dest        # 项目的目标目录，支持 ~ 和环境变量, 默认是 ${projName}/output
 projName=${projName}          # 默认取项目工程目录的名称
 
 # 项目版本，支持一个日期格式的占位符
@@ -29,7 +31,8 @@ projVersion=nightly.${yyMMdd_HHmmSS}
 
 # 下面的选项都支持半角逗号分隔的多个目录
 build_deps=${projName}/jars   # 项目的依赖 jar，会递归所有非隐藏文件夹
-build_src=${projName}/src     # 项目的源码目录，目录里所有的东东都会被打入 jar
+                              # 如果是一个Http URL, 那么会尝试下载并解压到${projName}/jars
+build_src=${projName}/src     # 项目的源码目录，目录里所有的东东(除了.java文件)都会被打入 jar
 build_conf=${projName}/conf   # 项目的配置文件目录，内容会被输出到 $dest_conf
 build_tmp=${destHome}/tmp     # 编译的临时目录，编译完毕会被删除，这个目录用来生成 jar
 
