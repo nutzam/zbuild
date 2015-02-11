@@ -4,14 +4,14 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.nutz.ioc.impl.PropertiesProxy;
+import org.nutz.zbuild.ZBuildProp;
 import org.nutz.zbuild.Zvfs;
 
 public class ZBuildGitCmd implements ZBuildCmd {
 
     public ZBuildGitCmd() {}
 
-    public void exec(Zvfs vfs, PropertiesProxy pp, String... args) {
+    public void exec(Zvfs vfs, ZBuildProp prop, String... args) {
         Set<String> olds = new HashSet<String>(Arrays.asList(vfs.list(".")));
         vfs.exec(null, "git", "clone", "-depth=1", args[0]);
         String newHome = null;
@@ -24,6 +24,6 @@ public class ZBuildGitCmd implements ZBuildCmd {
         if (newHome == null) {
             throw new RuntimeException("can't clone git repo");
         }
-        pp.put("projHome", newHome);
+        prop.setProjectHome(newHome);
     }
 }

@@ -3,6 +3,9 @@ package org.nutz.zbuild;
 import org.nutz.zbuild.impl.NativeZvfs;
 
 public class ZBuild {
+    
+    public static final String PROJECT_HOME = "proj_home";
+    public static final String DEST_HOME = "dest_home";
 
     public static void main(String[] args) throws Throwable {
         try {
