@@ -1,0 +1,27 @@
+#proj_home=.                   # 项目的工程目录，支持 ~ 和环境变量, 默认是当前路径
+dest_home=out                  # 项目的目标目录，支持 ~ 和环境变量, 默认是 ${projName}/output
+#proj_name=                    # 默认取项目工程目录的名称
+
+# 项目版本，支持一个日期格式的占位符
+projVersion=nightly.${yyMMdd_HHmmSS}
+
+# 下面的选项都支持半角逗号分隔的多个目录
+build_deps=${proj_home}/jars   # 项目的依赖 jar，会递归所有非隐藏文件夹
+                               # 如果是一个Http URL, 那么会尝试下载并解压到${projName}/jars
+build_src=${proj_home}/src     # 项目的源码目录，目录里所有的东东(除了.java文件)都会被打入 jar
+build_conf=${proj_home}/conf   # 项目的配置文件目录，内容会被输出到 $dest_conf
+build_tmp=${dest_home}/tmp     # 编译的临时目录，编译完毕会被删除，这个目录用来生成 jar
+
+# 下面和运行相关
+dest_bin=${dest_home}/bin          # 项目的运行脚本放在哪里
+dest_bin_start=${proj_name}_start  # 项目的启动脚本
+dest_bin_stop=${proj_name}_stop    # 项目的停止脚本
+dest_conf=${dest_home}/conf        # 项目的配置信息目录
+dest_jars=${dest_home}/jars        # 项目运行时依赖的 jar 存放的位置
+                                   # 当然，它也包括项目编译出来的 jar
+
+
+# 配置文件的替换
+# zbuild 会依次打开 $dest_home/conf 下面的所有 properties 文件，
+# 看到里面如果有下面的键，就会替换
+dest_properties=$destHome/local.properties
